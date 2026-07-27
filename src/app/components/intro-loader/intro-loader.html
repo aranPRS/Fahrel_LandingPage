@@ -1,0 +1,24 @@
+<div class="loader-overlay" [class.unlocked]="isUnlocked()">
+  <div class="terminal-container">
+    <div class="terminal-header">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+      <span class="terminal-title">FAHREL_ASSISTANT_BOOT.SH</span>
+    </div>
+    <div class="terminal-body">
+      @for (line of lines(); track $index) {
+        <div class="terminal-line">
+          <span class="terminal-prompt">&gt;</span>
+          <span class="terminal-text">{{ line }}</span>
+        </div>
+      }
+      
+      @if (showPressEnter()) {
+        <div class="press-enter blink">
+          [ Press Enter &mdash; or scroll &mdash; to launch ]
+        </div>
+      }
+    </div>
+  </div>
+</div>

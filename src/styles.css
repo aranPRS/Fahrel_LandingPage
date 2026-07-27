@@ -1,1 +1,359 @@
-/* You can add global styles to this file, and also import other style files */
+/* CSS Design System for Framer Landing Page Clone */
+
+:root {
+  /* Color Variables - Light Mode (Default) */
+  --color-bg-gradient: linear-gradient(180deg, #fff7ed 0%, #fffaf4 22%, #f8fbff 55%, #fff3ec 100%);
+  --color-text-primary: #0f172a;
+  --color-text-muted: #475569;
+  --color-brand-orange: #ff7a1a;
+  --color-brand-purple: #8b5cf6;
+  --color-brand-blue: #65b5ff;
+  
+  --color-glass-card: rgba(255, 255, 255, 0.85);
+  --color-glass-border: rgba(15, 23, 42, 0.12);
+  --color-glass-shadow: rgba(15, 23, 42, 0.08);
+  
+  /* Fonts */
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Geist', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  /* Spacing & Transitions */
+  --spacing-base: 8px;
+  --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.2s cubic-bezier(0.44, 0, 0.56, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark Mode Overrides */
+    --color-bg-gradient: linear-gradient(180deg, #0b0f19 0%, #0f172a 22%, #0e1115 55%, #15110e 100%);
+    --color-text-primary: #f8fafc;
+    --color-text-muted: #94a3b8;
+    --color-brand-orange: #ff9a3d;
+    --color-brand-purple: #bda7ff;
+    --color-brand-blue: #7dc6ff;
+    
+    --color-glass-card: rgba(15, 23, 42, 0.75);
+    --color-glass-border: rgba(248, 250, 252, 0.12);
+    --color-glass-shadow: rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Global Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100dvh;
+  background: var(--color-bg-gradient);
+  background-attachment: fixed;
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+}
+
+/* Typography Utility Classes (Matching Framer Presets) */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: var(--color-text-primary);
+}
+
+p {
+  font-family: var(--font-body);
+  color: var(--color-text-muted);
+}
+
+.text-mono-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-brand-orange);
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3.5vw + 0.8rem, 3rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.body-large {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.2vw + 0.6rem, 1.125rem);
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  color: var(--color-text-muted);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-glass-border);
+  border-radius: 99px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-orange);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Glassmorphism Card Style Utility */
+.glass-panel {
+  background-color: var(--color-glass-card);
+  border: 1px solid var(--color-glass-border);
+  box-shadow: 0 20px 60px var(--color-glass-shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  transition: var(--transition-smooth);
+}
+
+/* Hide Default Cursor when Custom Cursor mounts */
+body.custom-cursor-enabled,
+body.custom-cursor-enabled * {
+  cursor: none !important;
+}
+
+/* Keyframe Animations */
+@keyframes float-blob-orange {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(40px, -50px) scale(1.15); }
+  66% { transform: translate(-30px, 30px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes float-blob-purple {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(-50px, 40px) scale(0.9); }
+  66% { transform: translate(40px, -30px) scale(1.1); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes float-blob-blue {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, 30px) scale(1.1); }
+  66% { transform: translate(-40px, -40px) scale(0.95); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+/* Scroll Reveal classes */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.stagger-delay-1 { transition-delay: 0.1s; }
+.stagger-delay-2 { transition-delay: 0.2s; }
+.stagger-delay-3 { transition-delay: 0.3s; }
+.stagger-delay-4 { transition-delay: 0.4s; }
+.stagger-delay-5 { transition-delay: 0.5s; }
+.stagger-delay-6 { transition-delay: 0.6s; }
+
+/* Body Lock */
+body.body-locked {
+  overflow: hidden !important;
+  height: 100vh !important;
+}
+
+/* App Main Layout & Container spacing */
+.app-container {
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 24px 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 120px; /* Premium Spacing between sections */
+  pointer-events: none;
+}
+
+.app-container.unlocked {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* Typography Gradient effect */
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-brand-orange) 0%, var(--color-brand-purple) 60%, var(--color-brand-blue) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Base button styles matching Framer template */
+.btn-primary, .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.btn-primary {
+  background-color: #0f172a;
+  color: #ffffff !important;
+  border: 1px solid #0f172a;
+}
+
+.btn-primary * {
+  color: #ffffff !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-brand-orange, #ff6b00);
+  border-color: var(--color-brand-orange, #ff6b00);
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 107, 0, 0.3);
+}
+
+.btn-secondary {
+  background-color: var(--color-glass-card);
+  color: var(--color-text-primary, #1e293b);
+  border: 1px solid var(--color-glass-border);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.btn-secondary * {
+  color: var(--color-text-primary, #1e293b);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-glass-border);
+  color: var(--color-brand-orange, #ff6b00) !important;
+  transform: translateY(-2px);
+}
+
+/* Scenario Estimator custom styles */
+.slider-container {
+  width: 100%;
+  padding: 12px 0;
+}
+
+.custom-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 99px;
+  background: var(--color-glass-border);
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+.custom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-brand-orange);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 122, 26, 0.4);
+  transition: var(--transition-fast);
+}
+
+.custom-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: var(--color-brand-purple);
+}
+
+.custom-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-brand-orange);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 122, 26, 0.4);
+  transition: var(--transition-fast);
+}
+
+.custom-slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  background: var(--color-brand-purple);
+}
+
+/* Stagger Animation helpers */
+.animation-stagger-parent > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: staggerReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes staggerReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animation-stagger-parent > *:nth-child(1) { animation-delay: 0.1s; }
+.animation-stagger-parent > *:nth-child(2) { animation-delay: 0.2s; }
+.animation-stagger-parent > *:nth-child(3) { animation-delay: 0.3s; }
+.animation-stagger-parent > *:nth-child(4) { animation-delay: 0.4s; }
+.animation-stagger-parent > *:nth-child(5) { animation-delay: 0.5s; }
+.animation-stagger-parent > *:nth-child(6) { animation-delay: 0.6s; }
+.animation-stagger-parent > *:nth-child(7) { animation-delay: 0.7s; }
+.animation-stagger-parent > *:nth-child(8) { animation-delay: 0.8s; }
+

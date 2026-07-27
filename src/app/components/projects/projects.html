@@ -1,0 +1,46 @@
+<section class="projects-section" id="projects">
+  <div class="projects-header" scrollReveal>
+    <span class="text-mono-label">FEATURED PROJECTS</span>
+    <h2 class="section-title">Production-Grade Applications &amp; <span class="text-gradient">Real Case Studies</span></h2>
+    <p class="body-large">
+      Each project engineered to solve specific operational challenges, from national university admission portals to financial &amp; mobile e-commerce platforms.
+    </p>
+  </div>
+
+  <div class="projects-list">
+    @for (proj of projects(); track proj.title; let i = $index) {
+      <div class="project-card glass-panel" scrollReveal [revealDelay]="i * 60">
+        <div class="project-card-header">
+          <div class="header-left">
+            <span class="project-year text-mono-label">{{ proj.year }}</span>
+            <h3 class="project-title">{{ proj.title }}</h3>
+            <span class="project-role">{{ proj.role }}</span>
+          </div>
+          <div class="project-tags">
+            @for (tag of proj.tags; track tag) {
+              <span class="tag-pill">{{ tag }}</span>
+            }
+          </div>
+        </div>
+
+        <div class="project-card-body">
+          <div class="detail-block problem-block">
+            <h4 class="block-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              Problem Solved
+            </h4>
+            <p class="block-desc">{{ proj.problem }}</p>
+          </div>
+
+          <div class="detail-block result-block">
+            <h4 class="block-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              Results &amp; Impact
+            </h4>
+            <p class="block-desc">{{ proj.result }}</p>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</section>
