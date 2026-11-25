@@ -1,0 +1,116 @@
+<section class="aero-desktop-backdrop" aria-label="About Fahrel">
+  <div class="aero-page-inner">
+    <div class="page-header-row">
+      <div>
+        <h1 class="text-heading">About</h1>
+        <p class="text-ui aero-muted">
+          The short version of how I think, build, and keep systems from breaking.
+        </p>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <article class="aero-window bio-window">
+        <div class="aero-titlebar">
+          <span class="aero-titlebar-text">about.txt — background</span>
+          <span class="aero-titlebar-meta">4+ YEARS</span>
+        </div>
+
+        <div class="bio-body">
+          <div class="bio-profile">
+            <figure class="portrait-card">
+              <img
+                src="/Fahrel.jpg"
+                alt="Fahrel Ardhan Assegaff"
+                width="96"
+                height="96"
+                class="bio-portrait"
+              />
+              <figcaption class="portrait-caption">JKT · ID</figcaption>
+            </figure>
+
+            <div class="bio-profile-copy">
+              <h2 class="aero-card-heading">Fahrel Ardhan Assegaff</h2>
+              <p class="text-ui bio-subtitle">
+                Full-Stack &amp; Cross-Platform Software Engineer
+              </p>
+              <p class="text-ui aero-muted">
+                Web, mobile, POS &amp; enterprise systems · Open to full-time roles &amp; freelance
+              </p>
+            </div>
+          </div>
+
+          <p class="text-body">
+            What keeps me hooked on engineering is taking messy, real-world operational bottlenecks
+            and turning them into clean software that actually moves the needle — not over-engineered
+            demos built to look good on a whiteboard.
+          </p>
+
+          <p class="text-body">
+            Over 4+ years, I’ve shipped production web and mobile apps across very different arenas:
+            warehouse SKU inventory portals, retail e-commerce and POS systems used under real store
+            pressure, enterprise procurement workflows, BCA branch queuing maintenance, reseller
+            scrapers, and a national university admission portal serving thousands of concurrent
+            applicants.
+          </p>
+
+          <p class="text-body">
+            I prefer owning the full path: database schemas that don’t crack under scale, secure REST
+            APIs, and interfaces that stay responsive even on spotty mobile connections.
+            <strong>Little details matter.</strong>
+          </p>
+
+          <div class="bio-actions">
+            <a class="aero-btn-green" routerLink="/contact">Start a conversation</a>
+            <a class="aero-btn-white-blue" routerLink="/experience">Inspect career log</a>
+          </div>
+        </div>
+      </article>
+
+      <div class="about-sidebar">
+        <article class="aero-window">
+          <div class="aero-titlebar">
+            <span class="aero-titlebar-text">stack.cfg — tools &amp; skills</span>
+            <span class="aero-titlebar-meta">TOOLKIT</span>
+          </div>
+
+          <div class="stack-body">
+            @for (group of skillGroups; track group.category) {
+              <div class="skill-group">
+                <p class="text-label skill-category">{{ group.category }}</p>
+                <div class="aero-tag-list">
+                  @for (item of group.items; track item) {
+                    <span class="aero-tag">{{ item }}</span>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        </article>
+
+        <article class="aero-window offline-window">
+          <div class="aero-titlebar offline-titlebar">
+            <span class="aero-titlebar-text">offline.cfg — outside the IDE</span>
+            <span class="aero-titlebar-meta">CLICK A TAG</span>
+          </div>
+
+          <div class="interests-body">
+            <div class="aero-tag-list">
+              @for (hobby of interests; track hobby.label) {
+                <button
+                  type="button"
+                  class="interest-chip"
+                  [class.active]="selectedInterest() === hobby.label"
+                  (click)="selectInterest(hobby.label)"
+                >
+                  {{ hobby.label }}
+                </button>
+              }
+            </div>
+            <p class="text-ui interest-note">{{ activeInterestNote() }}</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>

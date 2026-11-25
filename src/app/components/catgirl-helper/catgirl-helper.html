@@ -1,0 +1,46 @@
+<div class="catgirl-anchor">
+  @if (isOpen()) {
+    <div
+      class="msn-dialog"
+      [class.msn-dialog--left]="popupSide() === 'left'"
+      [class.msn-dialog--right]="popupSide() === 'right'"
+      role="dialog"
+      [attr.aria-label]="title()"
+    >
+      <div class="msn-dialog-bar">
+        <span class="msn-dialog-title">{{ title() }}</span>
+        @if (hasMultiple()) {
+          <span class="msn-counter">{{ currentIndex() + 1 }}/{{ allMessages().length }}</span>
+        }
+      </div>
+      <div class="msn-dialog-body">
+        <p class="text-ui msn-dialog-message" [attr.aria-label]="currentMessage()">
+          <span>{{ displayedMessage() }}</span>
+          @if (isTyping()) {
+            <span class="typing-caret" aria-hidden="true"></span>
+          }
+        </p>
+        <button type="button" class="aero-btn-blue msn-close-btn" (click)="closeChat()">
+          Close
+        </button>
+      </div>
+    </div>
+  }
+
+  <button
+    type="button"
+    class="catgirl-trigger"
+    (click)="onSpriteClick()"
+    [attr.aria-expanded]="isOpen()"
+    aria-label="Click desktop assistant for a note"
+  >
+    <span class="helper-badge" aria-hidden="true">?</span>
+    <img
+      src="/assets/catgirl-helper.png"
+      alt="Pixel desktop assistant"
+      width="104"
+      height="136"
+      class="catgirl-sprite"
+    />
+  </button>
+</div>

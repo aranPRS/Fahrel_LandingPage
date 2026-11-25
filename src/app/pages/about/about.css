@@ -1,0 +1,162 @@
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 18px;
+  width: 100%;
+  align-items: start;
+}
+
+.bio-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+}
+
+.bio-profile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.portrait-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 5px 6px;
+  background-color: #FFFFFF;
+  border: 1px solid #96C5D8;
+  border-radius: 6px;
+  box-shadow: 2px 5px 12px rgba(17, 56, 78, 0.16);
+  transform: rotate(-2deg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+}
+
+.portrait-card:hover {
+  transform: rotate(0deg) translateY(-2px);
+  box-shadow: 0 8px 18px rgba(17, 56, 78, 0.22);
+}
+
+.bio-portrait {
+  width: 86px;
+  height: 86px;
+  border-radius: 4px;
+  object-fit: cover;
+  object-position: center 42%;
+  display: block;
+}
+
+.portrait-caption {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--color-ink-muted);
+}
+
+.bio-profile-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.bio-subtitle {
+  font-weight: 600;
+  color: var(--color-blue);
+}
+
+.bio-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+.about-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stack-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px 18px;
+}
+
+.skill-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.skill-category {
+  color: var(--color-ink-muted);
+}
+
+.offline-titlebar {
+  background: linear-gradient(180deg, #F0FFE0 0%, #B9EE85 48%, #8DD650 52%, #C9F49B 100%);
+  border-bottom-color: rgba(84, 148, 46, 0.45);
+}
+
+.interests-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 15px 18px;
+}
+
+.interest-chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-ink);
+  background: linear-gradient(180deg, #FFFFFF 0%, #DCF3FC 100%);
+  border: 1px solid #8CC1D8;
+  border-radius: 5px;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+}
+
+.interest-chip:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-blue);
+}
+
+.interest-chip.active {
+  background: var(--gradient-green-cta);
+  border-color: #4A8B2C;
+  font-weight: 600;
+}
+
+.interest-note {
+  padding: 10px 12px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--color-divider);
+  border-radius: 5px;
+  color: var(--color-ink);
+}
+
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .bio-profile {
+    align-items: flex-start;
+  }
+
+  .bio-portrait {
+    width: 68px;
+    height: 68px;
+  }
+}

@@ -1,0 +1,145 @@
+<section class="home-desktop" aria-label="Interactive Frutiger Aero desktop">
+  <div class="ambient-bubbles" aria-hidden="true">
+    <span class="bubble bubble--1"></span>
+    <span class="bubble bubble--2"></span>
+    <span class="bubble bubble--3"></span>
+    <span class="bubble bubble--4"></span>
+  </div>
+
+  <div class="desktop-stage">
+    <nav class="desktop-shortcuts" aria-label="Desktop shortcuts">
+      @for (item of shortcuts; track item.route) {
+        <a class="shortcut-tile" [routerLink]="item.route">
+          <span class="shortcut-icon" [class]="'shortcut-icon--' + item.tint">
+            <app-aero-icon [name]="item.icon" [size]="20" />
+          </span>
+          <span class="shortcut-label">{{ item.label }}</span>
+        </a>
+      }
+    </nav>
+
+    <div class="floating-workspace">
+      <div class="workspace-col-left">
+        <article
+          class="aero-window floating-window hero-window"
+          [class.is-dragging]="draggingId() === 'hero'"
+          [style.transform]="windowTransform('hero')"
+          [style.z-index]="windows().hero.z"
+          (pointerdown)="bringToFront('hero')"
+        >
+          <div
+            class="aero-titlebar draggable-bar"
+            (pointerdown)="startDrag($event, 'hero')"
+            title="Drag to move window"
+          >
+            <span class="aero-titlebar-text">fahrel.exe — overview</span>
+            <span class="aero-titlebar-meta">DRAG ME</span>
+          </div>
+
+          <div class="hero-body">
+            <div class="hero-identity">
+              <img
+                src="/Fahrel.jpg"
+                alt="Fahrel Ardhan Assegaff"
+                width="74"
+                height="74"
+                class="hero-avatar"
+              />
+              <div class="hero-heading-group">
+                <h1 class="text-heading">Fahrel Ardhan Assegaff</h1>
+                <p class="hero-role">Full-Stack &amp; Mobile Engineer · Quietly fixing the hard parts.</p>
+              </div>
+            </div>
+
+            <p class="text-body">
+              4+ years shipping production web, mobile, POS, and enterprise systems. I favor clean,
+              pragmatic architectures that survive real traffic over clever ones that collapse in
+              production.
+            </p>
+
+            <div class="aero-tag-list" aria-label="Core technologies">
+              @for (tech of coreStack; track tech) {
+                <span class="aero-tag">{{ tech }}</span>
+              }
+            </div>
+
+            <div class="hero-actions">
+              <a class="aero-btn-green" routerLink="/experience">See 17 deliverables</a>
+              <a class="aero-btn-white-blue" routerLink="/projects">Case studies</a>
+              <a class="aero-btn-white-blue" routerLink="/about">How I work</a>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="aero-window floating-window sticky-window"
+          [class.is-dragging]="draggingId() === 'note'"
+          [style.transform]="windowTransform('note', -1.2)"
+          [style.z-index]="windows().note.z"
+          (pointerdown)="bringToFront('note')"
+        >
+          <div
+            class="aero-titlebar sticky-titlebar draggable-bar"
+            (pointerdown)="startDrag($event, 'note')"
+            title="Drag to move note"
+          >
+            <span class="aero-titlebar-text">playbook.note</span>
+            <span class="aero-titlebar-meta">FIELD NOTE</span>
+          </div>
+
+          <div class="sticky-body">
+            <p class="text-ui sticky-quote">
+              Automate the repetitive parts, cut unnecessary complexity early, and leave code that
+              the next engineer won’t curse six months from now.
+            </p>
+            <span class="text-label sticky-meta">4+ YEARS · WEB · MOBILE · ENTERPRISE OPS</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="workspace-col-right">
+        <article
+          class="aero-window floating-window receipts-window"
+          [class.is-dragging]="draggingId() === 'receipts'"
+          [style.transform]="windowTransform('receipts')"
+          [style.z-index]="windows().receipts.z"
+          (pointerdown)="bringToFront('receipts')"
+        >
+          <div
+            class="aero-titlebar draggable-bar"
+            (pointerdown)="startDrag($event, 'receipts')"
+            title="Drag to move window"
+          >
+            <span class="aero-titlebar-text">receipts.log — shipped work</span>
+            <span class="aero-titlebar-meta">2022–2026</span>
+          </div>
+
+          <div class="highlights-body">
+            @for (item of highlights; track item.org) {
+              <div class="highlight-row">
+                <div class="highlight-top">
+                  <strong class="highlight-org">{{ item.org }}</strong>
+                  <span class="highlight-period">{{ item.period }}</span>
+                </div>
+                <p class="text-ui highlight-summary">{{ item.summary }}</p>
+              </div>
+            }
+          </div>
+        </article>
+
+        <div class="desktop-helper-dock">
+          @if (hasMoved()) {
+            <button type="button" class="aero-btn-white-blue reset-layout-btn" (click)="resetLayout()">
+              Reset windows
+            </button>
+          }
+          <app-catgirl-helper
+            [messages]="assistantNotes"
+            title="assistant.msn · desktop tip"
+            popupSide="left"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+<section class="aero-desktop-backdrop" aria-label="Selected projects">
+  <div class="aero-page-inner">
+    <div class="page-header-row">
+      <div>
+        <h1 class="text-heading">Selected Projects</h1>
+        <p class="text-ui aero-muted">Production systems built to hold up past launch day.</p>
+      </div>
+      <a class="aero-btn-white-blue" routerLink="/experience">Open full 17-item career log →</a>
+    </div>
+
+    <div class="projects-grid">
+      @for (project of projects; track project.title) {
+        <article class="aero-window project-card" [class]="'project-card--' + project.accent">
+          <div class="aero-titlebar project-titlebar">
+            <span class="aero-titlebar-text">{{ project.title }}</span>
+            <span class="aero-titlebar-meta">{{ project.year }}</span>
+          </div>
+
+          <div class="project-body">
+            <div class="project-subhead">
+              <span class="project-role">{{ project.role }}</span>
+              <span
+                class="aero-tag"
+                [class.aero-tag--accent]="project.status === 'PRODUCTION' || project.status === 'SHIPPED'"
+              >
+                {{ project.status }}
+              </span>
+            </div>
+
+            <div class="project-details">
+              <p class="text-ui">
+                <strong class="detail-label">Challenge:</strong> {{ project.problem }}
+              </p>
+              <p class="text-ui">
+                <strong class="detail-label">Delivered:</strong> {{ project.result }}
+              </p>
+            </div>
+
+            <div class="aero-tag-list project-tags">
+              @for (tag of project.tags; track tag) {
+                <span class="aero-tag">{{ tag }}</span>
+              }
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

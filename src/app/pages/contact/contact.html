@@ -1,0 +1,126 @@
+<section class="aero-desktop-backdrop" aria-label="Contact Fahrel">
+  <div class="aero-page-inner">
+    <div class="page-header-row">
+      <div>
+        <h1 class="text-heading">Contact</h1>
+        <p class="text-ui aero-muted">
+          No 12-field contact forms. Pick a channel and let’s talk.
+        </p>
+      </div>
+    </div>
+
+    <div class="contact-grid">
+      <article class="aero-window">
+        <div class="aero-titlebar">
+          <span class="aero-titlebar-text">direct_channels.msn</span>
+          <span class="aero-titlebar-meta">ONLINE</span>
+        </div>
+
+        <div class="channels-body">
+          <div class="online-status">
+            <span class="online-dot" aria-hidden="true"></span>
+            <p class="text-ui status-copy">Open for full-time roles &amp; freelance projects</p>
+          </div>
+
+          <div class="channel-list">
+            <div class="channel-row">
+              <div class="channel-info">
+                <span class="text-label channel-label">EMAIL</span>
+                <a [href]="'mailto:' + email" class="channel-value">{{ email }}</a>
+              </div>
+              <button type="button" class="aero-btn-white-blue copy-btn" (click)="copyEmail()">
+                <app-aero-icon [name]="copiedEmail() ? 'check' : 'copy'" [size]="13" />
+                <span>{{ copiedEmail() ? 'Copied' : 'Copy' }}</span>
+              </button>
+            </div>
+
+            <div class="channel-row">
+              <div class="channel-info">
+                <span class="text-label channel-label">WHATSAPP</span>
+                <a [href]="whatsappLink" target="_blank" rel="noopener" class="channel-value">
+                  {{ phone }}
+                </a>
+              </div>
+              <a [href]="whatsappLink" target="_blank" rel="noopener" class="aero-btn-white-blue">
+                <span>Chat</span>
+                <app-aero-icon name="external" [size]="13" />
+              </a>
+            </div>
+
+            <div class="channel-row">
+              <div class="channel-info">
+                <span class="text-label channel-label">LINKEDIN</span>
+                <a [href]="linkedinLink" target="_blank" rel="noopener" class="channel-value">
+                  fahrel-ardhan-assegaf
+                </a>
+              </div>
+              <a [href]="linkedinLink" target="_blank" rel="noopener" class="aero-btn-white-blue">
+                <span>Profile</span>
+                <app-aero-icon name="external" [size]="13" />
+              </a>
+            </div>
+
+            <div class="channel-row">
+              <div class="channel-info">
+                <span class="text-label channel-label">LOCATION</span>
+                <span class="channel-plain">{{ location }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="aero-window">
+        <div class="aero-titlebar">
+          <span class="aero-titlebar-text">compose_message.eml</span>
+          <span class="aero-titlebar-meta">QUICK EMAIL</span>
+        </div>
+
+        <form class="composer-body" (submit)="$event.preventDefault()">
+          <label class="field-group">
+            <span class="text-label field-label">YOUR NAME</span>
+            <input
+              type="text"
+              class="aero-input"
+              placeholder="Jane Doe"
+              [ngModel]="senderName()"
+              (ngModelChange)="senderName.set($event)"
+              name="senderName"
+            />
+          </label>
+
+          <label class="field-group">
+            <span class="text-label field-label">SUBJECT</span>
+            <input
+              type="text"
+              class="aero-input"
+              placeholder="Full-stack / Mobile role or project"
+              [ngModel]="subject()"
+              (ngModelChange)="subject.set($event)"
+              name="subject"
+            />
+          </label>
+
+          <label class="field-group">
+            <span class="text-label field-label">MESSAGE</span>
+            <textarea
+              rows="4"
+              class="aero-input aero-textarea"
+              placeholder="Share a quick summary of what you're building or hiring for..."
+              [ngModel]="message()"
+              (ngModelChange)="message.set($event)"
+              name="message"
+            ></textarea>
+          </label>
+
+          <div class="composer-actions">
+            <a class="aero-btn-green" [href]="buildMailtoHref()">
+              <app-aero-icon name="mail" [size]="14" />
+              <span>Open in Email App</span>
+            </a>
+          </div>
+        </form>
+      </article>
+    </div>
+  </div>
+</section>

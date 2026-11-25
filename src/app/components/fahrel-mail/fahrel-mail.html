@@ -1,0 +1,89 @@
+<section class="aero-window mail-client" aria-label="Career work log">
+  <div class="mail-titlebar">
+    <div class="mail-title-left">
+      <app-aero-icon name="mail" [size]="15" class="mail-title-icon" />
+      <span class="mail-title-name">Fahrel Mail — Career Log</span>
+    </div>
+    <span class="aero-titlebar-meta">17 DELIVERABLES · 2 COMPANIES</span>
+  </div>
+
+  <div class="mail-three-pane">
+    <aside class="mail-folders-pane" aria-label="Filter by company">
+      <p class="text-label mail-folders-heading">FOLDERS</p>
+      @for (folder of folders; track folder.id) {
+        <button
+          type="button"
+          class="folder-item"
+          [class.active]="activeFolder() === folder.id"
+          (click)="selectFolder(folder.id)"
+        >
+          <app-aero-icon
+            [name]="folder.id === 'highlights' ? 'flag' : 'folder'"
+            [size]="14"
+            class="folder-icon"
+          />
+          <span class="folder-label">{{ folder.label }}</span>
+        </button>
+      }
+    </aside>
+
+    <div class="mail-list-pane" aria-label="Deliverable list">
+      <div class="folder-heading-bar">
+        <span class="folder-heading-text">{{ activeFolderMeta().heading }}</span>
+      </div>
+
+      <div class="scrollable-messages">
+        @for (email of visibleEmails(); track email.id) {
+          <button
+            type="button"
+            class="email-row"
+            [class.selected]="selectedEmail().id === email.id"
+            (click)="selectEmail(email.id)"
+          >
+            @if (email.important) {
+              <app-aero-icon name="flag" [size]="14" class="row-icon row-icon--flag" />
+            } @else {
+              <app-aero-icon name="paperclip" [size]="14" class="row-icon row-icon--clip" />
+            }
+            <div class="email-row-details">
+              <span class="email-row-subject">{{ email.subject }}</span>
+              <span class="email-row-meta">{{ email.company }} · {{ email.period }}</span>
+            </div>
+          </button>
+        }
+      </div>
+    </div>
+
+    <article class="mail-reading-pane" aria-live="polite">
+      <div class="reading-header">
+        <div class="reading-badges">
+          <span class="aero-tag aero-tag--accent">{{ selectedEmail().category }}</span>
+          <span class="reading-period">{{ selectedEmail().period }}</span>
+        </div>
+        <h2 class="reading-subject">{{ selectedEmail().subject }}</h2>
+        <p class="reading-meta">
+          <strong>{{ selectedEmail().company }}</strong> · {{ selectedEmail().role }}
+        </p>
+      </div>
+
+      <div class="reading-separator" aria-hidden="true"></div>
+
+      <p class="reading-body">{{ selectedEmail().summary }}</p>
+
+      <div class="reading-scope">
+        <p class="text-label reading-scope-title">WHAT WAS DELIVERED</p>
+        <ul class="scope-list">
+          @for (bullet of selectedEmail().scope; track $index) {
+            <li class="scope-item">{{ bullet }}</li>
+          }
+        </ul>
+      </div>
+
+      <div class="aero-tag-list reading-tags">
+        @for (tag of selectedEmail().tags; track $index) {
+          <span class="aero-tag">{{ tag }}</span>
+        }
+      </div>
+    </article>
+  </div>
+</section>

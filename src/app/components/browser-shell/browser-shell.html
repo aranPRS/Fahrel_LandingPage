@@ -1,0 +1,73 @@
+<div class="explorer-frame">
+  <header class="browser-chrome">
+    <div class="browser-topstrip">
+      <a class="browser-brand" routerLink="/" aria-label="Fahrel Explorer home">
+        <app-aero-icon name="globe" [size]="18" class="browser-globe-icon" />
+        <span class="browser-brand-name">Fahrel Explorer</span>
+      </a>
+
+      <nav class="page-tabs-bar" aria-label="Primary navigation">
+        @for (tab of tabs; track tab.route) {
+          <a
+            class="browser-tab text-ui"
+            [routerLink]="tab.route"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: !!tab.exact }"
+          >
+            <app-aero-icon [name]="tab.icon" [size]="14" />
+            <span>{{ tab.label }}</span>
+          </a>
+        }
+      </nav>
+
+      <a
+        class="aero-btn-green hire-cta"
+        routerLink="/contact"
+        routerLinkActive="hire-cta--active"
+      >
+        <app-aero-icon name="mail" [size]="14" />
+        <span>Contact.msn</span>
+      </a>
+    </div>
+
+    <div class="address-toolbar">
+      <div class="address-input" role="status" aria-label="Current address">
+        <app-aero-icon name="globe" [size]="14" class="address-globe-icon" />
+        <span class="text-ui address-text">{{ address() }}</span>
+      </div>
+      <span class="availability-pill">
+        <span class="availability-dot" aria-hidden="true"></span>
+        <span>Open for roles &amp; builds · Jakarta, ID</span>
+      </span>
+    </div>
+  </header>
+
+  <main class="browser-viewport">
+    <router-outlet />
+  </main>
+
+  <footer class="browser-statusbar">
+    <span class="text-ui status-left">Fahrel Ardhan Assegaff · built this cuz frutiger aero meme lmao</span>
+    <nav class="status-links" aria-label="Direct contact links">
+      <a href="mailto:fahrelardhanassegaff@gmail.com" class="status-link">Email</a>
+      <span class="status-sep" aria-hidden="true">·</span>
+      <a
+        href="https://linkedin.com/in/fahrel-ardhan-assegaf-479180241"
+        target="_blank"
+        rel="noopener"
+        class="status-link"
+      >
+        LinkedIn
+      </a>
+      <span class="status-sep" aria-hidden="true">·</span>
+      <a
+        href="https://wa.me/6285773427134"
+        target="_blank"
+        rel="noopener"
+        class="status-link"
+      >
+        WhatsApp
+      </a>
+    </nav>
+  </footer>
+</div>

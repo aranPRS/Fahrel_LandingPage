@@ -1,0 +1,135 @@
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  width: 100%;
+  align-items: start;
+}
+
+.channels-body,
+.composer-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px 20px;
+}
+
+.online-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: #E7F7D8;
+  border: 1px solid #9ACC70;
+  border-radius: 5px;
+}
+
+.online-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background-color: #4FAE26;
+  flex-shrink: 0;
+}
+
+.status-copy {
+  font-weight: 500;
+}
+
+.channel-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-divider);
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #FFFFFF;
+}
+
+.channel-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.channel-row:last-child {
+  border-bottom: none;
+}
+
+.channel-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.channel-label {
+  color: var(--color-ink-muted);
+}
+
+.channel-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-blue);
+  word-break: break-word;
+}
+
+.channel-value:hover {
+  text-decoration: underline;
+}
+
+.channel-plain {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.copy-btn {
+  flex-shrink: 0;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.field-label {
+  color: var(--color-ink-muted);
+}
+
+.aero-input {
+  width: 100%;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-address-border);
+  border-radius: 4px;
+  padding: 8px 10px;
+  font-size: 14px;
+  color: var(--color-ink);
+  transition: border-color 0.14s ease, box-shadow 0.14s ease;
+}
+
+.aero-input:focus {
+  outline: none;
+  border-color: var(--color-blue);
+  box-shadow: 0 0 0 2px rgba(8, 124, 170, 0.16);
+}
+
+.aero-textarea {
+  resize: vertical;
+  min-height: 92px;
+}
+
+.composer-actions {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 2px;
+}
+
+@media (max-width: 860px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
