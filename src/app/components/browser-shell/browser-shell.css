@@ -227,8 +227,9 @@
   .browser-tab {
     flex: 1 1 auto;
     justify-content: center;
-    padding: 7px 8px;
-    font-size: 12px;
+    padding: 7px 6px;
+    gap: 4px;
+    font-size: 11.5px;
   }
 
   .availability-pill {

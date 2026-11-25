@@ -1,58 +1,57 @@
 .mail-client {
   width: 100%;
   height: clamp(470px, calc(100dvh - 200px), 630px);
-  background-color: var(--color-paper);
+  background: var(--color-paper);
 }
 
-.mail-titlebar {
+.mail-titlebar,
+.folder-heading-bar,
+.reading-badges {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 8px;
+}
+
+.mail-titlebar {
   background: var(--gradient-titlebar);
   padding: 8px 12px;
   border-bottom: 1px solid rgba(75, 157, 187, 0.45);
 }
 
-.mail-title-left {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.mail-title-icon {
-  color: #256884;
-}
-
-.mail-title-name {
-  font-family: var(--font-ui);
-  font-weight: 600;
-  font-size: 13px;
-  color: var(--color-ink);
-}
+.mail-title-left { display: flex; align-items: center; gap: 8px; }
+.mail-title-icon { color: #256884; }
+.mail-title-name { font-weight: 600; font-size: 13px; }
 
 .mail-three-pane {
   display: flex;
   flex: 1 0 0;
   min-height: 0;
-  background-color: var(--color-pane-border);
+  background: var(--color-pane-border);
   gap: 1px;
+}
+
+.mail-folders-pane,
+.mail-list-pane,
+.scrollable-messages,
+.email-row-details,
+.mail-reading-pane,
+.reading-header,
+.reading-scope,
+.scope-list {
+  display: flex;
+  flex-direction: column;
 }
 
 .mail-folders-pane {
   width: 210px;
   flex-shrink: 0;
-  background-color: var(--color-sidebar-bg);
+  background: var(--color-sidebar-bg);
   padding: 12px 8px;
-  display: flex;
-  flex-direction: column;
   gap: 4px;
 }
 
-.mail-folders-heading {
-  padding: 2px 6px 6px;
-  color: var(--color-ink-muted);
-}
+.mail-folders-heading { padding: 2px 6px 6px; color: var(--color-ink-muted); }
 
 .folder-item {
   display: flex;
@@ -65,54 +64,33 @@
   background: transparent;
   cursor: pointer;
   text-align: left;
-  font-family: var(--font-ui);
   font-weight: 500;
   font-size: 12.5px;
-  color: var(--color-ink);
   transition: background-color 0.12s ease;
 }
 
-.folder-item:hover {
-  background-color: rgba(188, 228, 242, 0.6);
-}
-
-.folder-item.active {
-  background-color: var(--color-folder-active);
-  font-weight: 600;
-}
-
-.folder-icon {
-  color: #337791;
-}
+.folder-item:hover { background: rgba(188, 228, 242, 0.6); }
+.folder-item.active { background: var(--color-folder-active); font-weight: 600; }
+.folder-icon { color: #337791; }
 
 .mail-list-pane {
   width: 340px;
   flex-shrink: 0;
-  background-color: var(--color-paper);
-  display: flex;
-  flex-direction: column;
+  background: var(--color-paper-solid);
   min-height: 0;
 }
 
 .folder-heading-bar {
-  background-color: var(--color-bookmarks-bar);
+  background: var(--color-bookmarks-bar);
   border-bottom: 1px solid var(--color-pane-border);
   padding: 8px 12px;
 }
 
-.folder-heading-text {
-  font-weight: 600;
-  font-size: 12.5px;
-  color: var(--color-ink);
-}
+.folder-heading-text { font-weight: 600; font-size: 12.5px; }
+.mobile-tap-hint, .row-chevron, .mobile-back-btn { display: none; }
+.mobile-tap-hint { font-size: 11.5px; }
 
-.scrollable-messages {
-  flex: 1 0 0;
-  min-height: 0;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
+.scrollable-messages { flex: 1 0 0; min-height: 0; overflow-y: auto; }
 
 .email-row {
   display: flex;
@@ -122,174 +100,67 @@
   padding: 10px 12px;
   border: none;
   border-bottom: 1px solid var(--color-divider);
-  background-color: var(--color-paper);
+  background: var(--color-paper-solid);
   cursor: pointer;
   text-align: left;
   transition: background-color 0.1s ease;
 }
 
-.email-row:hover {
-  background-color: #DFEFF7;
-}
-
-.email-row.selected {
-  background-color: var(--color-mail-selected);
-}
-
-.row-icon {
-  margin-top: 3px;
-}
-
-.row-icon--clip {
-  color: var(--color-edge);
-}
-
-.row-icon--flag {
-  color: var(--color-flag-gold);
-}
-
-.email-row-details {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-
-.email-row-subject {
-  font-weight: 600;
-  font-size: 13px;
-  line-height: 1.35;
-  color: var(--color-ink);
-}
-
-.email-row-meta {
-  font-size: 11.5px;
-  line-height: 1.4;
-  color: var(--color-ink-muted);
-}
+.email-row:hover { background: #DFEFF7; }
+.email-row.selected { background: var(--color-mail-selected); }
+.row-icon { margin-top: 3px; }
+.row-icon--clip { color: var(--color-edge); }
+.row-icon--flag { color: var(--color-flag-gold); }
+.email-row-details { flex: 1 1 auto; gap: 2px; min-width: 0; }
+.email-row-subject { font-weight: 600; font-size: 13px; line-height: 1.35; }
+.email-row-meta { font-size: 11.5px; line-height: 1.4; }
+.row-chevron { align-self: center; font-size: 18px; line-height: 1; padding-left: 4px; }
 
 .mail-reading-pane {
   flex: 1 0 0;
   min-width: 0;
-  background-color: #FFFFFF;
+  background: #FFF;
   padding: 20px 24px;
-  display: flex;
-  flex-direction: column;
   gap: 14px;
   overflow-y: auto;
 }
 
-.reading-header {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.reading-badges {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.reading-period {
-  font-family: var(--font-pixel);
-  font-size: 10.5px;
-  color: var(--color-ink-muted);
-}
-
-.reading-subject {
-  font-family: var(--font-ui);
-  font-weight: 600;
-  font-size: 19px;
-  line-height: 1.3;
-  color: var(--color-ink);
-}
-
-.reading-meta {
-  font-size: 13px;
-  color: var(--color-ink-muted);
-}
-
-.reading-meta strong {
-  color: var(--color-ink);
-  font-weight: 600;
-}
-
-.reading-separator {
-  width: 100%;
-  height: 1px;
-  background-color: var(--color-divider);
-}
-
-.reading-body {
-  font-size: 14.5px;
-  line-height: 1.55;
-  color: var(--color-ink);
-}
+.mobile-back-btn { align-self: flex-start; }
+.reading-header { gap: 6px; }
+.reading-period { font-family: var(--font-pixel); font-size: 10.5px; }
+.reading-subject { font-weight: 600; font-size: 19px; line-height: 1.3; }
+.reading-meta { font-size: 13px; }
+.reading-meta strong { color: var(--color-ink); font-weight: 600; }
+.reading-separator { width: 100%; height: 1px; background: var(--color-divider); }
+.reading-body { font-size: 14.5px; line-height: 1.55; }
 
 .reading-scope {
-  display: flex;
-  flex-direction: column;
   gap: 8px;
-  background-color: #F4FAFD;
+  background: #F4FAFD;
   border: 1px solid var(--color-divider);
   border-radius: 5px;
   padding: 12px 14px;
 }
 
-.reading-scope-title {
-  color: var(--color-ink-muted);
-}
-
-.scope-list {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding-left: 18px;
-}
-
-.scope-item {
-  font-size: 13.5px;
-  line-height: 1.45;
-  color: var(--color-ink);
-}
-
-.reading-tags {
-  margin-top: auto;
-  padding-top: 4px;
-}
+.scope-list { gap: 6px; padding-left: 18px; }
+.scope-item { font-size: 13.5px; line-height: 1.45; }
+.reading-tags { margin-top: auto; padding-top: 4px; }
 
 @media (max-width: 1020px) {
-  .mail-client {
-    height: auto;
-  }
+  .mail-client { height: auto; }
+  .mail-three-pane { flex-direction: column; flex: 0 0 auto; }
+  .mail-folders-pane, .mail-list-pane { width: 100%; }
+  .mail-folders-pane { flex-direction: row; flex-wrap: wrap; align-items: center; }
+  .mail-folders-heading { width: 100%; padding-bottom: 2px; }
+  .folder-item { width: auto; }
+  .mobile-tap-hint, .row-chevron, .mobile-back-btn { display: inline-flex; }
+  .scrollable-messages { flex: 0 0 auto; max-height: none; overflow-y: visible; }
+  .mail-reading-pane { display: none; flex: 0 0 auto; overflow-y: visible; padding: 16px; }
+  .mail-client--mobile-reading .mail-folders-pane,
+  .mail-client--mobile-reading .mail-list-pane { display: none; }
+  .mail-client--mobile-reading .mail-reading-pane { display: flex; }
+}
 
-  .mail-three-pane {
-    flex-direction: column;
-  }
-
-  .mail-folders-pane,
-  .mail-list-pane {
-    width: 100%;
-  }
-
-  .mail-folders-pane {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .mail-folders-heading {
-    width: 100%;
-    padding-bottom: 2px;
-  }
-
-  .folder-item {
-    width: auto;
-  }
-
-  .scrollable-messages {
-    max-height: 260px;
-  }
+@media (max-width: 600px) {
+  .mail-titlebar .aero-titlebar-meta { display: none; }
 }

@@ -1,4 +1,8 @@
-<section class="aero-window mail-client" aria-label="Career work log">
+<section
+  class="aero-window mail-client"
+  [class.mail-client--mobile-reading]="mobileReadingOpen()"
+  aria-label="Career work log"
+>
   <div class="mail-titlebar">
     <div class="mail-title-left">
       <app-aero-icon name="mail" [size]="15" class="mail-title-icon" />
@@ -30,6 +34,7 @@
     <div class="mail-list-pane" aria-label="Deliverable list">
       <div class="folder-heading-bar">
         <span class="folder-heading-text">{{ activeFolderMeta().heading }}</span>
+        <span class="mobile-tap-hint aero-muted">Tap to open</span>
       </div>
 
       <div class="scrollable-messages">
@@ -47,21 +52,30 @@
             }
             <div class="email-row-details">
               <span class="email-row-subject">{{ email.subject }}</span>
-              <span class="email-row-meta">{{ email.company }} · {{ email.period }}</span>
+              <span class="email-row-meta aero-muted">{{ email.company }} · {{ email.period }}</span>
             </div>
+            <span class="row-chevron aero-muted" aria-hidden="true">›</span>
           </button>
         }
       </div>
     </div>
 
     <article class="mail-reading-pane" aria-live="polite">
+      <button
+        type="button"
+        class="aero-btn-white-blue mobile-back-btn"
+        (click)="closeMobileReading()"
+      >
+        ← Back to inbox
+      </button>
+
       <div class="reading-header">
         <div class="reading-badges">
           <span class="aero-tag aero-tag--accent">{{ selectedEmail().category }}</span>
-          <span class="reading-period">{{ selectedEmail().period }}</span>
+          <span class="reading-period aero-muted">{{ selectedEmail().period }}</span>
         </div>
         <h2 class="reading-subject">{{ selectedEmail().subject }}</h2>
-        <p class="reading-meta">
+        <p class="reading-meta aero-muted">
           <strong>{{ selectedEmail().company }}</strong> · {{ selectedEmail().role }}
         </p>
       </div>
@@ -71,7 +85,7 @@
       <p class="reading-body">{{ selectedEmail().summary }}</p>
 
       <div class="reading-scope">
-        <p class="text-label reading-scope-title">WHAT WAS DELIVERED</p>
+        <p class="text-label aero-muted">WHAT WAS DELIVERED</p>
         <ul class="scope-list">
           @for (bullet of selectedEmail().scope; track $index) {
             <li class="scope-item">{{ bullet }}</li>

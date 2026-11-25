@@ -83,12 +83,16 @@ describe('Fahrel Portfolio', () => {
     expect(component.visibleEmails().length).toBe(3);
 
     component.selectFolder('all');
+    expect(component.mobileReadingOpen()).toBe(false);
     for (const email of CAREER_EMAILS) {
       component.selectEmail(email.id);
       fixture.detectChanges();
       expect(component.selectedEmail().subject).toBe(email.subject);
       expect(component.selectedEmail().summary).toBe(email.summary);
+      expect(component.mobileReadingOpen()).toBe(true);
     }
+    component.closeMobileReading();
+    expect(component.mobileReadingOpen()).toBe(false);
   });
 
   it('should auto-open, type out, auto-cycle every 4s, advance on click, and close', () => {

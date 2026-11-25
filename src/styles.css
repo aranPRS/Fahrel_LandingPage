@@ -285,6 +285,7 @@ textarea {
 .draggable-bar {
   cursor: grab;
   user-select: none;
+  touch-action: none;
 }
 
 .draggable-bar:active {

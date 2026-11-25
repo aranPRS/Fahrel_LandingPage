@@ -164,10 +164,7 @@
   .floating-workspace { grid-template-columns: 1fr; gap: 16px; }
   .desktop-shortcuts { flex-direction: row; flex-wrap: wrap; gap: 8px; padding-top: 0; }
   .workspace-col-right { padding-top: 0; }
-  .floating-window { transform: none !important; }
-  .draggable-bar { cursor: default; }
   .sticky-window { max-width: none; }
-  .reset-layout-btn { display: none; }
 }
 
 @media (max-width: 809.98px) {

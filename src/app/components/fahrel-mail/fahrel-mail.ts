@@ -19,6 +19,7 @@ export class FahrelMailComponent {
   readonly folders: MailFolderMeta[] = MAIL_FOLDERS;
   readonly activeFolder = signal<MailFolderId>('all');
   readonly selectedEmailId = signal<string>(CAREER_EMAILS[0].id);
+  readonly mobileReadingOpen = signal<boolean>(false);
 
   readonly activeFolderMeta = computed(
     () => this.folders.find((f) => f.id === this.activeFolder()) ?? this.folders[0]
@@ -43,6 +44,7 @@ export class FahrelMailComponent {
 
   selectFolder(folderId: MailFolderId): void {
     this.activeFolder.set(folderId);
+    this.mobileReadingOpen.set(false);
     const firstVisible = this.visibleEmails()[0];
     if (firstVisible) {
       this.selectedEmailId.set(firstVisible.id);
@@ -51,5 +53,10 @@ export class FahrelMailComponent {
 
   selectEmail(emailId: string): void {
     this.selectedEmailId.set(emailId);
+    this.mobileReadingOpen.set(true);
+  }
+
+  closeMobileReading(): void {
+    this.mobileReadingOpen.set(false);
   }
 }

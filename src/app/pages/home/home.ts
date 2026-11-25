@@ -118,13 +118,11 @@ export class HomePageComponent {
   }
 
   startDrag(event: PointerEvent, id: WindowId): void {
-    if (typeof window !== 'undefined' && window.innerWidth <= 980) {
-      return;
-    }
-    if (event.button !== 0) {
+    if (event.pointerType === 'mouse' && event.button !== 0) {
       return;
     }
     event.preventDefault();
+    (event.currentTarget as HTMLElement | null)?.setPointerCapture?.(event.pointerId);
     this.bringToFront(id);
     const current = this.windows()[id];
     this.dragContext = {
@@ -145,7 +143,9 @@ export class HomePageComponent {
     const { id, startX, startY, originX, originY } = this.dragContext;
     const dx = event.clientX - startX;
     const dy = event.clientY - startY;
-    const clampedX = Math.max(-260, Math.min(260, originX + dx));
+    const isNarrow = typeof window !== 'undefined' && window.innerWidth <= 980;
+    const maxX = isNarrow ? 90 : 260;
+    const clampedX = Math.max(-maxX, Math.min(maxX, originX + dx));
     const clampedY = Math.max(-140, Math.min(220, originY + dy));
 
     this.windows.update((prev) => ({
